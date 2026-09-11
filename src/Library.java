@@ -29,14 +29,15 @@ public class Library {
                 bookFound = singularbook;
                 break;
             }
-            else {
-                System.out.println("Book not found");
-                return;
-            }
         }
-        listOfBooks.remove(bookFound);
-        repository.saveAll(listOfBooks);
-        System.out.println("Your book has been removed");
+        if(bookFound != null){
+            listOfBooks.remove(bookFound);
+            repository.saveAll(listOfBooks);
+            System.out.println("The book has been removed");
+        }
+        else {
+            System.out.println("The book cannot be found");
+        }
     }
     public List<Book> searchByTitle(String title){
         List<Book> emptyBook = new ArrayList<>();

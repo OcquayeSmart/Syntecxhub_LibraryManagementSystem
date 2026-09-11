@@ -26,7 +26,7 @@ public class LibraryMenu {
 0. Exit
 """);
             System.out.print("Enter you choice(1-5): ");
-            int choice = validation.checkInt();
+            int choice = validation.checkRange(0,5);
             switch(choice){
                 case 1 -> addBookToLibrary();
                 case 2 -> removeBookToLibrary();
@@ -34,16 +34,15 @@ public class LibraryMenu {
                 case 4 -> searchBookByAuthor();
                 case 5 -> library.viewAvailableBooks();
                 case 0 -> isRunning = false;
-                default -> validation.checkRange(1,5);
             }
         }
     }
     public void addBookToLibrary(){
         System.out.print("Enter the book title to add: ");
-        String title = scanner.nextLine();
+        String title = validation.checkString();
         String ISBN = UUID.randomUUID().toString().substring(0,8);
         System.out.print("Name of author: ");
-        String author = scanner.nextLine();
+        String author = validation.checkString();
         System.out.print("Enter the number of pages: ");
         int numberOfPages = validation.checkInt();
         System.out.println("Your ISBN is: " + ISBN);
@@ -57,7 +56,7 @@ public class LibraryMenu {
     }
     public void searchBookByTitle(){
         System.out.print("Enter the title of the book: ");
-        String title = scanner.nextLine();
+        String title = validation.checkString();
 
         List<Book> bookList = library.searchByTitle(title);
         if(bookList.isEmpty()){
@@ -72,7 +71,7 @@ public class LibraryMenu {
     }
     public void searchBookByAuthor(){
         System.out.print("Enter the name of the author: ");
-        String author = scanner.nextLine();
+        String author = validation.checkString();
         List<Book> bookList = library.searchByTitle(author);
         if(bookList.isEmpty()){
             System.out.println("There are no books with that author");

@@ -27,16 +27,20 @@ public class InputValidation {
             }
         }
     }
-    public String checkString(String text){
+    public String checkString(){
         while(true){
-            try{
-                return scanner.nextLine().trim();
+            String userInput = scanner.nextLine().trim();
+
+            if(userInput.isEmpty()){
+                System.out.println("Your input cannot be empty. Please try again. ");
             }
-            catch(IllegalArgumentException e){
-                System.out.println("Wrong input, please try again: ");
+            //using regex here
+            if(!userInput.matches(".*[a-zA-Z]+.*")){
+                System.out.println("Please enter the right string, not numbers etc.");
+                System.out.println("Please try again");
             }
-            catch(Exception e){
-                System.out.println("Something went wrong. Please try again: ");
+            else{
+                return userInput;
             }
         }
     }
