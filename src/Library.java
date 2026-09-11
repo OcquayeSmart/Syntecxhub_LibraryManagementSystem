@@ -21,16 +21,21 @@ public class Library {
             System.out.println("Your book has been added successfully");
         }
     }
-    public void removeBook(Book book){
-        for(Book singularbook:listOfBooks){
-            if(!listOfBooks.contains(singularbook)){
-                System.out.println("Book already removed!!");
+    public void removeBook(String ISBN){
+        Book bookFound = null;
+        for(Book singularbook:listOfBooks) {
+            if (singularbook.getISBN().equalsIgnoreCase(ISBN)) {
+                bookFound = singularbook;
+                break;
+            }
+            else {
+                System.out.println("Book not found");
                 return;
             }
-            listOfBooks.remove(book);
-            repository.saveAll(listOfBooks);
-            System.out.println("Your book has been removed");
         }
+        listOfBooks.remove(bookFound);
+        repository.saveAll(listOfBooks);
+        System.out.println("Your book has been removed");
     }
     public List<Book> searchByTitle(String title){
         List<Book> emptyBook = new ArrayList<>();

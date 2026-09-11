@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.UUID;
 
 public class LibraryMenu {
     private Library library;
@@ -37,29 +38,21 @@ public class LibraryMenu {
         }
     }
     public void addBookToLibrary(){
-        System.out.print("Enter the book title: ");
+        System.out.print("Enter the book title to add: ");
         String title = scanner.nextLine();
-        System.out.print("Enter the ISBN: ");
-        String ISBN = scanner.nextLine();
+        String ISBN = UUID.randomUUID().toString().substring(0,8);
         System.out.print("Name of author: ");
         String author = scanner.nextLine();
         System.out.print("Enter the number of pages: ");
         int numberOfPages = validation.checkInt();
+        System.out.println("Your ISBN is: " + ISBN);
         Book book = new Book(ISBN, author, title, numberOfPages, true);
         library.addBook(book);
     }
     public void removeBookToLibrary(){
-        System.out.print("Enter title of book to borrow: ");
-        String title = scanner.nextLine();
-        System.out.print("Enter the ISBN: ");
+        System.out.print("Enter the ISBN of the book to remove: ");
         String ISBN = scanner.nextLine();
-        System.out.print("Enter the name of author: ");
-        String author = scanner.nextLine();
-        System.out.print("Enter the number of pages: ");
-        int numberOfPages = validation.checkInt();
-        boolean isAvailable = true;
-        Book book = new Book(ISBN, author, title, numberOfPages, false);
-        library.removeBook(book);
+        library.removeBook(ISBN);
     }
     public void searchBookByTitle(){
         System.out.print("Enter the title of the book: ");
