@@ -22,7 +22,7 @@ public class Book {
         String author = parts[2];
         int pageCount = Integer.parseInt(parts[3]);
         boolean isAvailable = Boolean.parseBoolean(parts[4]);
-        return new Book(isbn, title, author, pageCount, isAvailable);
+        return new Book(isbn, author, title, pageCount, isAvailable);
     }
 
     public String getISBN() {

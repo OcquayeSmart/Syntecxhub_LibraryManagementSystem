@@ -72,7 +72,7 @@ public class LibraryMenu {
     public void searchBookByAuthor(){
         System.out.print("Enter the name of the author: ");
         String author = validation.checkString();
-        List<Book> bookList = library.searchByTitle(author);
+        List<Book> bookList = library.searchByAuthor(author);
         if(bookList.isEmpty()){
             System.out.println("There are no books with that author");
         }

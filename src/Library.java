@@ -5,7 +5,7 @@ public class Library {
     private List<Book> listOfBooks;
     private BookRepository repository;
 
-    public Library(BookRepository repository, List<Book> books) {
+    public Library(BookRepository repository, List<Book> listOfBooks) {
         this.repository = repository;
         this.listOfBooks = repository.loadAll();
     }

@@ -9,7 +9,7 @@ public class BookRepository {
             fw.write("ISBN, Title, Author, Page Count, Is Available\n");
             for(Book singleBook:listOfBook){
                 fw.write(singleBook.toCSV());
-                System.out.println();
+                fw.write("\n");
             }
         }
         catch (IOException e) {
