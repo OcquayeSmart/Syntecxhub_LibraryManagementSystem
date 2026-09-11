@@ -31,7 +31,7 @@ public class BookRepository {
             }
         }
         catch (FileNotFoundException e) {
-            System.out.println("File was not found");
+            return new ArrayList<>();
         }
         catch (IOException e) {
             System.out.println("Could not read file");
