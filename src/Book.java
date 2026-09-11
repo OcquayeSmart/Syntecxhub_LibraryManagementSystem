@@ -1,9 +1,9 @@
 public class Book {
-    String ISBN;
-    String author;
-    String title;
-    int pageCount;
-    boolean isAvailable;
+    final private String ISBN;
+    final private String author;
+    final private String title;
+    private int pageCount;
+    private boolean isAvailable;
 
     public Book(String ISBN, String author, String title, int pageCount, boolean isAvailable) {
         this.ISBN = ISBN;
@@ -12,45 +12,39 @@ public class Book {
         this.pageCount = pageCount;
         this.isAvailable = isAvailable;
     }
+    public String toCSV(){
+        return ISBN + "," + title + "," + author + "," + pageCount + "," + isAvailable;
+    }
+    public Book fromCSV(String line){
+        line = toCSV();
+        String[] lines = line.split(",");
+        lines[0] = ISBN;
+        lines[1] = title;
+        lines[2] = author;
+        pageCount = Integer.parseInt(lines[3]);
+        isAvailable = Boolean.parseBoolean(lines[4]);
+        Book book = new Book(ISBN, title, author, pageCount, isAvailable);
+        return book;
+    }
 
     public String getISBN() {
         return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getTitle() {
         return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public int getPageCount() {
         return pageCount;
     }
 
-    public void setPageCount(int pageCount) {
-        this.pageCount = pageCount;
-    }
-
     public boolean isAvailable() {
         return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
     }
 
     @Override
