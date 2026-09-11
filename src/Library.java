@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Library {
-    private List<Book> listOfBooks;
-    private BookRepository repository;
+    private final List<Book> listOfBooks;
+    private final BookRepository repository;
 
-    public Library(BookRepository repository, List<Book> listOfBooks) {
+    public Library(BookRepository repository) {
         this.repository = repository;
         this.listOfBooks = repository.loadAll();
     }

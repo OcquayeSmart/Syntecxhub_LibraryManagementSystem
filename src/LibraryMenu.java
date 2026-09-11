@@ -3,9 +3,9 @@ import java.util.Scanner;
 import java.util.UUID;
 
 public class LibraryMenu {
-    private Library library;
-    private Scanner scanner;
-    private InputValidation validation;
+    private final Library library;
+    private final Scanner scanner;
+    private final InputValidation validation;
     boolean isRunning = true;
 
     public LibraryMenu(Library library, Scanner scanner, InputValidation validation) {

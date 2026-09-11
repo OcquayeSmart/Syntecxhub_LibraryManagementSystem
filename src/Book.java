@@ -2,8 +2,8 @@ public class Book {
     final private String ISBN;
     final private String author;
     final private String title;
-    private int pageCount;
-    private boolean isAvailable;
+    private final int pageCount;
+    private final boolean isAvailable;
 
     public Book(String ISBN, String author, String title, int pageCount, boolean isAvailable) {
         this.ISBN = ISBN;
