@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -57,11 +58,30 @@ public class LibraryMenu {
     public void searchBookByTitle(){
         System.out.print("Enter the title of the book: ");
         String title = scanner.nextLine();
-        library.searchByTitle(title);
+
+        List<Book> bookList = library.searchByTitle(title);
+        if(bookList.isEmpty()){
+            System.out.println("There are no books with that tile");
+        }
+        else{
+            System.out.println("Your book has been found");
+            for(Book book:bookList){
+                System.out.println(book.getTitle() + " by " + book.getAuthor());
+            }
+        }
     }
     public void searchBookByAuthor(){
         System.out.print("Enter the name of the author: ");
         String author = scanner.nextLine();
-        library.searchByAuthor(author);
+        List<Book> bookList = library.searchByTitle(author);
+        if(bookList.isEmpty()){
+            System.out.println("There are no books with that author");
+        }
+        else{
+            System.out.println("Your book has been found");
+            for(Book book:bookList){
+                System.out.println(book.getTitle() + " by " + book.getAuthor());
+            }
+        }
     }
 }

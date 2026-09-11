@@ -27,4 +27,17 @@ public class InputValidation {
             }
         }
     }
+    public String checkString(String text){
+        while(true){
+            try{
+                return scanner.nextLine().trim();
+            }
+            catch(IllegalArgumentException e){
+                System.out.println("Wrong input, please try again: ");
+            }
+            catch(Exception e){
+                System.out.println("Something went wrong. Please try again: ");
+            }
+        }
+    }
 }

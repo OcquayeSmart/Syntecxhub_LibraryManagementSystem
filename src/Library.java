@@ -11,15 +11,16 @@ public class Library {
     }
 
     public void addBook(Book book){
-        for(Book books:listOfBooks){
-            if(book.getISBN().equals(books.getISBN())){
+        for(Book books:listOfBooks) {
+            if (book.getISBN().equals(books.getISBN())) {
                 System.out.println("Book already exists");
                 return;
             }
-            listOfBooks.add(book);
-            repository.saveAll(listOfBooks);
-            System.out.println("Your book has been added successfully");
         }
+        listOfBooks.add(book);
+        repository.saveAll(listOfBooks);
+        System.out.println("Your book has been added successfully");
+
     }
     public void removeBook(String ISBN){
         Book bookFound = null;
