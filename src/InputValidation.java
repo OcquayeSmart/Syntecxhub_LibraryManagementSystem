@@ -15,16 +15,6 @@ public class InputValidation {
             }
         }
     }
-    public double checkDouble(){
-        while(true){
-            try{
-                return Double.parseDouble(scanner.nextLine().trim());
-            }
-            catch(NumberFormatException e){
-                System.out.print("Invalid Input, please try again: ");
-            }
-        }
-    }
     public int checkRange(int min, int max){
         while(true){
             int value = checkInt();

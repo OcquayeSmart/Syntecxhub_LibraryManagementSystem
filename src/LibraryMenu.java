@@ -5,7 +5,6 @@ public class LibraryMenu {
     private Scanner scanner;
     private InputValidation validation;
     boolean isRunning = true;
-    Book book;
 
     public LibraryMenu(Library library, Scanner scanner, InputValidation validation) {
         this.library = library;
@@ -27,13 +26,49 @@ public class LibraryMenu {
             System.out.print("Enter you choice(1-5): ");
             int choice = validation.checkInt();
             switch(choice){
-                case 1 -> library.addBook(book);
-                case 2 -> library.removeBook(book);
-                case 3 -> library.searchByTitle(book);
-                case 4 -> library.searchByAuthor(book);
-                case 5 -> library.viewAvailableBooks(book);
+                case 1 -> addBookToLibrary();
+                case 2 -> removeBookToLibrary();
+                case 3 -> searchBookByTitle();
+                case 4 -> searchBookByAuthor();
+                case 5 -> library.viewAvailableBooks();
                 case 0 -> isRunning = false;
+                default -> validation.checkRange(1,5);
             }
         }
+    }
+    public void addBookToLibrary(){
+        System.out.print("Enter the book title: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter the ISBN: ");
+        String ISBN = scanner.nextLine();
+        System.out.print("Name of author: ");
+        String author = scanner.nextLine();
+        System.out.print("Enter the number of pages: ");
+        int numberOfPages = validation.checkInt();
+        Book book = new Book(ISBN, author, title, numberOfPages, true);
+        library.addBook(book);
+    }
+    public void removeBookToLibrary(){
+        System.out.print("Enter title of book to borrow: ");
+        String title = scanner.nextLine();
+        System.out.print("Enter the ISBN: ");
+        String ISBN = scanner.nextLine();
+        System.out.print("Enter the name of author: ");
+        String author = scanner.nextLine();
+        System.out.print("Enter the number of pages: ");
+        int numberOfPages = validation.checkInt();
+        boolean isAvailable = true;
+        Book book = new Book(ISBN, author, title, numberOfPages, false);
+        library.removeBook(book);
+    }
+    public void searchBookByTitle(){
+        System.out.print("Enter the title of the book: ");
+        String title = scanner.nextLine();
+        library.searchByTitle(title);
+    }
+    public void searchBookByAuthor(){
+        System.out.print("Enter the name of the author: ");
+        String author = scanner.nextLine();
+        library.searchByAuthor(author);
     }
 }

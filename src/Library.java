@@ -32,33 +32,32 @@ public class Library {
             System.out.println("Your book has been removed");
         }
     }
-    public void searchByTitle(Book book){
+    public List<Book> searchByTitle(String title){
+        List<Book> emptyBook = new ArrayList<>();
         for(Book singularbook:listOfBooks){
-            if(!singularbook.getTitle().equalsIgnoreCase(book.getTitle())){
-                System.out.println("Book does not exist");
-                return;
+            if(singularbook.getTitle().contains(title)){
+                emptyBook.add(singularbook);
             }
-            System.out.println("You searched for: ");
-            System.out.println(singularbook);
         }
+        return emptyBook;
     }
-    public void searchByAuthor(Book book){
+    public List<Book> searchByAuthor(String author){
+        List<Book> emptyBook = new ArrayList<>();
         for(Book singularbook:listOfBooks){
-            if(!singularbook.getAuthor().equalsIgnoreCase(book.getTitle())){
-                System.out.println("Book does not exist");
-                return;
+            if(singularbook.getAuthor().contains(author)){
+                emptyBook.add(singularbook);
             }
-            System.out.println("You searched for: ");
-            System.out.println(singularbook);
         }
+        return emptyBook;
     }
-    public void viewAvailableBooks(Book book){
+    public void viewAvailableBooks(){
         if(listOfBooks.isEmpty()){
-            System.out.println("No books found.");
+            System.out.println("There are no books in the library.");
             return;
         }
-        for(Book singularbook:listOfBooks){
-
+        System.out.println("\nISBN\t\tTitle\t\tAuthor\t\tPages\tAvailable");
+        for(Book singularbook: listOfBooks){
+            System.out.println(singularbook.getISBN() + "\t" + singularbook.getTitle() + "\t" + singularbook.getAuthor() + "\t" + singularbook.getPageCount() + "\t" + singularbook.isAvailable());
         }
     }
 }
