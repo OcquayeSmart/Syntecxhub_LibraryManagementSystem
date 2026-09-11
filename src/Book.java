@@ -15,16 +15,14 @@ public class Book {
     public String toCSV(){
         return ISBN + "," + title + "," + author + "," + pageCount + "," + isAvailable;
     }
-    public Book fromCSV(String line){
-        line = toCSV();
-        String[] lines = line.split(",");
-        lines[0] = ISBN;
-        lines[1] = title;
-        lines[2] = author;
-        pageCount = Integer.parseInt(lines[3]);
-        isAvailable = Boolean.parseBoolean(lines[4]);
-        Book book = new Book(ISBN, title, author, pageCount, isAvailable);
-        return book;
+    public static Book fromCSV(String line){
+        String[] parts = line.split(",");
+        String isbn = parts[0];
+        String title = parts[1];
+        String author = parts[2];
+        int pageCount = Integer.parseInt(parts[3]);
+        boolean isAvailable = Boolean.parseBoolean(parts[4]);
+        return new Book(isbn, title, author, pageCount, isAvailable);
     }
 
     public String getISBN() {
