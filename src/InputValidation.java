@@ -33,6 +33,7 @@ public class InputValidation {
 
             if(userInput.isEmpty()){
                 System.out.println("Your input cannot be empty. Please try again. ");
+                continue;
             }
             //using regex here
             if(!userInput.matches(".*[a-zA-Z]+.*")){
