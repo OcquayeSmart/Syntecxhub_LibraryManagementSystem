@@ -5,6 +5,7 @@ public class LibraryMenu {
     private Scanner scanner;
     private InputValidation validation;
     boolean isRunning = true;
+    Book book;
 
     public LibraryMenu(Library library, Scanner scanner, InputValidation validation) {
         this.library = library;
@@ -26,11 +27,11 @@ public class LibraryMenu {
             System.out.print("Enter you choice(1-5): ");
             int choice = validation.checkInt();
             switch(choice){
-                case 1 -> addBook();
-                case 2 -> removeBook();
-                case 3 -> searchByTitle();
-                case 4 -> searchByAuthor();
-                case 5 -> viewAvailableBooks();
+                case 1 -> library.addBook(book);
+                case 2 -> library.removeBook(book);
+                case 3 -> library.searchByTitle(book);
+                case 4 -> library.searchByAuthor(book);
+                case 5 -> library.viewAvailableBooks(book);
                 case 0 -> isRunning = false;
             }
         }
