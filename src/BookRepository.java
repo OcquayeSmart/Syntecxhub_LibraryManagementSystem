@@ -23,9 +23,11 @@ public class BookRepository {
         List<Book> books = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String line;
+            br.readLine();
             while((line = br.readLine()) != null){
-                System.out.println();
-                books.add(Book.fromCSV(line));
+                if(!line.trim().isBlank()){
+                    books.add(Book.fromCSV(line));
+                }
             }
         }
         catch (FileNotFoundException e) {

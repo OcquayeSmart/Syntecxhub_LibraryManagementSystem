@@ -24,13 +24,13 @@ public class LibraryMenu {
 0. Exit
 """);
             System.out.print("Enter you choice(1-5): ");
-            int choice = scanner.nextInt();
+            int choice = validation.checkInt();
             switch(choice){
-                case 1 -> {}
-                case 2 -> {}
-                case 3 -> {}
-                case 4 -> {}
-                case 5 -> {}
+                case 1 -> addBook();
+                case 2 -> removeBook();
+                case 3 -> searchByTitle();
+                case 4 -> searchByAuthor();
+                case 5 -> viewAvailableBooks();
                 case 0 -> isRunning = false;
             }
         }
